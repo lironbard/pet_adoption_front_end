@@ -4,16 +4,18 @@ import React, { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NavBar from "./components/NavBar";
+import SideBar from "./components/SideBar";
 import Footer from "./components/Footer";
 import HomeScreen from "./screens-pages/HomeScreen";
-import LogIn from "./components/LogIn";
-import SignUp from "./components/SignUp";
+import LogIn from "./components/LogInModal";
+import SignUp from "./components/SignUpModal";
 function App() {
   const [petsArray, setPetsArray] = useState("");
 
   return (
     <>
-      <NavBar />
+      {/* <NavBar /> */}
+      <SideBar />
       <main className="py-3">
         <Container>
           <HomeScreen />
