@@ -9,19 +9,31 @@ import Footer from "./components/Footer";
 import HomeScreen from "./screens-pages/HomeScreen";
 import LogIn from "./components/LogInModal";
 import SignUp from "./components/SignUpModal";
+import Search from "./components/Search"
 function App() {
   const [petsArray, setPetsArray] = useState("");
 
   return (
     <>
-      {/* <NavBar /> */}
-      <SideBar />
-      <main className="py-3">
-        <Container>
-          <HomeScreen />
-        </Container>
-      </main>
-      <Footer />
+      <Router>
+        <div className="App">
+          <Switch>
+            <Route
+              exact
+              path="/"
+              render={() => (
+                <>
+                  <SideBar />
+                  <Footer />
+                </>
+              )}
+            />
+            <Route path="/Search">
+              <Search />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
     </>
     // <Router>
     //   <div className="App">

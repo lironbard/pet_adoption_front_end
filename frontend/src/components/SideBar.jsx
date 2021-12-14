@@ -25,6 +25,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import HomeScreen from "../screens-pages/HomeScreen";
 import LoginSignupButton from "./LoginSignupButton";
 import LoginSignupModal from "./LoginSignupModal";
+import { useHistory } from "react-router";
 
 const drawerWidth = 240;
 
@@ -71,10 +72,24 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   justifyContent: "flex-end",
 }));
 
-export default function PersistentDrawerLeft() {
+export default function PersistentDrawerLeft({children}) {
   const theme = useTheme();
   const [open, setOpen] = useState(false);
   let [openModal, setOpenModal] = useState(false);
+  const history = useHistory([]);
+
+  const menuItems = [
+    {
+      text: "HOME",
+      icon: <HomeIcon color="primary" />,
+      path: "/",
+    },
+    {
+      text: "SEARCH",
+      icon: <SearchIcon color="primary" />,
+      path: "/Search",
+    },
+  ];
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -109,9 +124,9 @@ export default function PersistentDrawerLeft() {
       </AppBar>
       <Main open={open}>
         <DrawerHeader />
-        <Typography noWrap component="div" variant="h5">
-          <HomeScreen />
-        </Typography>
+        {/* <Typography noWrap={true} component="div" variant="h5" align="center" content="center">
+            <HomeScreen />
+        </Typography> */}
       </Main>
       <Drawer
         sx={{
@@ -130,11 +145,35 @@ export default function PersistentDrawerLeft() {
           <IconButton onClick={handleDrawerClose}>{theme.direction === "ltr" ? <ChevronLeftIcon /> : <ChevronRightIcon />}</IconButton>
         </DrawerHeader>
         {/* <Divider /> */}
-        <List>
+        {/* <List>
+          <ListItem button key="HOME">
+            <ListItemIcon>
+              <HomeIcon />
+            </ListItemIcon>
+            <ListItemText primary="HOME" />
+          </ListItem>
+          <ListItem button key="SEARCH">
+            <ListItemIcon>
+              <SearchIcon />
+            </ListItemIcon>
+            <ListItemText primary="SEARCH" />
+          </ListItem>
+        </List> */}
+
+        {/* <List>
           {["HOME", "SEARCH"].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>{index % 2 === 0 ? <HomeIcon /> : <SearchIcon />}</ListItemIcon>
               <ListItemText primary={text} />
+            </ListItem>
+          ))}
+        </List> */}
+
+        <List>
+          {menuItems.map((item) => (
+            <ListItem button key={item.text} onClick={() => history.push(item.path)}>
+              <ListItemIcon>{item.icon}</ListItemIcon>
+              <ListItemText primary={item.text} />
             </ListItem>
           ))}
         </List>
