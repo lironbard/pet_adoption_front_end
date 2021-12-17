@@ -1,12 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Row, Col, Image, ListGroup, Card, Button } from "react-bootstrap";
-import pets from "../PetDataSet";
+import axios from "axios";
 
 const PetScreen = () => {
+  const [pet, setPet] = useState({});
   const params = useParams();
-  const pet = pets.find((p) => p.id === params.id);
+
+  useEffect(() => {
+    const fetchPet = async () => {
+      const { data } = await axios.get(`/api/pets/${params.id}`);
+      setPet(data);
+    };
+    fetchPet();
+  }, []);
+  // const pet = pets.find((p) => p.id === params.id);
   return (
     <>
       <div className="container">

@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Pet from "../components/Pet";
-import pets from "../PetDataSet";
 import { Row, Col } from "react-bootstrap";
+import axios from "axios";
 
 const HomeScreen = () => {
+  const [pets, setPets] = useState([]);
+
+  useEffect(() => {
+    const fetchPets = async () => {
+      const { data } = await axios.get("/api/pets");
+      setPets(data);
+    };
+    fetchPets();
+  }, []);
+
   return (
     <>
       <h1>Pets currently waiting for a new home:</h1>
