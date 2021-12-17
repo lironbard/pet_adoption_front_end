@@ -10,6 +10,7 @@ const HomeScreen = () => {
     const fetchPets = async () => {
       const { data } = await axios.get("/api/pets");
       setPets(data);
+      console.log("Axios");
     };
     fetchPets();
   }, []);
