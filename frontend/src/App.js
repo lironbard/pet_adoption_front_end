@@ -7,9 +7,11 @@ import NavBar from "./components/NavBar";
 import SideBar from "./components/SideBar";
 import Footer from "./components/Footer";
 import HomeScreen from "./screens-pages/HomeScreen";
+import PetScreen from "./screens-pages/PetScreen";
 import LogIn from "./components/LogInModal";
 import SignUp from "./components/SignUpModal";
-import Search from "./components/Search"
+import Search from "./components/Search";
+
 function App() {
   const [petsArray, setPetsArray] = useState("");
 
@@ -24,12 +26,20 @@ function App() {
               render={() => (
                 <>
                   <SideBar />
+                  <HomeScreen />
                   <Footer />
                 </>
               )}
             />
             <Route path="/Search">
+              <SideBar />
               <Search />
+              <Footer />
+            </Route>
+            <Route path="/pet/:id">
+              <SideBar />
+              <PetScreen />
+              <Footer />
             </Route>
           </Switch>
         </div>

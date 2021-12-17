@@ -18,13 +18,13 @@ const SignUp = (props) => {
   };
 
   return (
-    <div>
+    <div className="p-5">
       <form onSubmit={(e) => handleSubmit(e)}>
         <div className="mb-3">
           <label htmlFor="inputEmail" className="form-label">
             Email address:
           </label>
-          <input onChange={(e) => setEmail(e.target.value)} value={email} type="email" className="form-control" id="inputEmail" aria-describedby="emailHelp" />
+          <input onChange={(e) => setEmail(e.target.value)} value={email} type="email" className="form-control" id="inputEmail" aria-describedby="emailHelp" style={{ width: "50%" }} />
           <div id="emailHelp">We will never share your email with anyone.</div>
         </div>
         {/* ------------------------------ */}
@@ -32,7 +32,7 @@ const SignUp = (props) => {
           <label htmlFor="inputPassword" className="form-label">
             Password:
           </label>
-          <input onChange={(e) => setPassword(e.target.value)} value={password} type="password" className="form-control" id="inputPassword" aria-describedby="passwordHelp" />
+          <input onChange={(e) => setPassword(e.target.value)} value={password} type="password" className="form-control" id="inputPassword" aria-describedby="passwordHelp" style={{ width: "50%" }} />
           <div id="passwordHelp">We will never ask for your password outside this page.</div>
         </div>
         {/* ------------------------------ */}
@@ -40,7 +40,14 @@ const SignUp = (props) => {
           <label htmlFor="repeatPassword" className="form-label">
             Please Type Your Password Again:
           </label>
-          <input onChange={(e) => setRepeatPassword(e.target.value)} value={repeatPassword} type="password" className={`form-control ${validPass ? "" : "is-invalid"}`} id="repeatPassword" />
+          <input
+            onChange={(e) => setRepeatPassword(e.target.value)}
+            value={repeatPassword}
+            type="password"
+            className={`form-control ${validPass ? "" : "is-invalid"}`}
+            id="repeatPassword"
+            style={{ width: "50%" }}
+          />
           {!validPass ? (
             <div id="validationServerUsernameFeedback" className="invalid-feedback">
               Passwords do not match.
@@ -50,8 +57,8 @@ const SignUp = (props) => {
           )}
         </div>
         {/* ------------------------------ */}
-        <div className="d-flex flex warp">
-          <div className="col=5">
+        <div className="d-flex flex warp py-3">
+          <div className="mb-3">
             <label htmlFor="firstName" className="form-label">
               First Name:
             </label>
@@ -73,8 +80,8 @@ const SignUp = (props) => {
         </div>
         {/* ------------------------------ */}
         <br />
-        <div className="d-flex justify-content-around">
-          <button className="btn btn-success" type="submit">
+        <div className="d-flex justify-content-around align-items-center">
+          <button className="btn btn-success" type="submit" >
             Submit
           </button>
         </div>

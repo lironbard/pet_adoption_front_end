@@ -10,7 +10,7 @@ const LogIn = (props) => {
       right: "auto",
       bottom: "auto",
       marginRight: "-50%",
-      transform: "translate(-20%,-20%)",
+      transform: "translate(-50%,-50%)",
     },
   };
 
@@ -35,14 +35,14 @@ const LogIn = (props) => {
       <form onSubmit={(e) => handleSubmit(e)}>
         <div className="mb-3">
           <label className="form-label">Email address</label>
-          <input type="email" className="form-control" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <input type="email" className="form-control" value={email} onChange={(e) => setEmail(e.target.value)} style={{ width: "50%" }} />
         </div>
         <div className="mb-3">
           <label className="form-label">Password</label>
-          <input type="password" className="form-control" value={password} onChange={(e) => setPassword(e.target.value)} />
+          <input type="password" className="form-control" value={password} onChange={(e) => setPassword(e.target.value)} style={{ width: "50%" }} />
         </div>
         <div className="d-flex justify-content-between">
-          <button type="submit" className="btn btn-secondary">
+          <button type="submit" className="btn btn-success">
             Submit
           </button>
         </div>
