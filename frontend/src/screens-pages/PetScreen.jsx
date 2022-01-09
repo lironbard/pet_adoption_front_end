@@ -12,6 +12,7 @@ const PetScreen = () => {
     const fetchPet = async () => {
       const { data } = await axios.get(`/api/pets/${params.id}`);
       setPet(data);
+      console.log("Axios");
     };
     fetchPet();
   }, []);
